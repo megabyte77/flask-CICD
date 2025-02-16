@@ -3,14 +3,14 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-creds')
-        DOCKER_IMAGE = 'luther443/my-nginx-app'
+        DOCKER_IMAGE = 'luther443/my-flask-app'
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/megabyte77/docker_app_ci.git'
+                url: 'https://github.com/megabyte77/flask-CICD.git'
             }
         }
 
@@ -38,7 +38,7 @@ pipeline {
                     sh(script: """
                     docker stop my-app || true
                     docker rm my-app || true
-                    docker run -d --name my-app -p 80:80 ${DOCKER_IMAGE}:${env.BUILD_ID}
+                    docker run -d --name my-app -p 80:5000 ${DOCKER_IMAGE}:${env.BUILD_ID}
                     """)
                 }
             }
