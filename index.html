@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Community</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .typing {
+            font-size: 1.5rem;
+            color: #00ffcc;
+            font-weight: bold;
+        }
+        .cta {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            background: #00ffcc;
+            color: #121212;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 8px;
+        }
+        .cta:hover {
+            background: #008f99;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Welcome to the DevOps Community</h1>
+        <p class="typing"></p>
+        <button class="cta" onclick="alert('Join Us & Automate Everything!')">Join Now</button>
+    </div>
+    <script>
+        const texts = ["Collaborate", "Automate", "Monitor", "Deploy Smarter"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+        function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            document.querySelector(".typing").textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 150);
+            }
+        }
+        type();
+    </script>
+</body>
+</html>
